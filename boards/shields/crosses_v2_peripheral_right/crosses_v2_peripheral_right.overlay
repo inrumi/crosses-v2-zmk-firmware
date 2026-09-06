@@ -1,0 +1,15 @@
+/ {
+    // Disable the left (peripheral) input split node since we aren't central
+    // and won't receive it.
+};
+
+&trackball_peripheral_split {
+    status = "disabled";
+};
+
+// Enable the right (central) input split node so our local trackball
+// sends data over BLE to the real central.
+&trackball_central_split {
+    status = "okay";
+    device = <&trackball_central>;
+};
